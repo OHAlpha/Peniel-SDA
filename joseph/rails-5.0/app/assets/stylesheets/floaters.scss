@@ -1,0 +1,71 @@
+@import 'palette-classes';
+
+$floater-centers: $theme-col-delta-0,
+$theme-col-epsilon-0,
+$theme-col-zeta-0,
+$theme-col-delta-1,
+$theme-col-epsilon-1,
+$theme-col-zeta-1,
+$theme-col-delta-2,
+$theme-col-epsilon-2,
+$theme-col-zeta-2,
+$theme-col-delta-3,
+$theme-col-epsilon-3,
+$theme-col-zeta-3,
+$theme-col-delta-0,
+$theme-col-epsilon-0,
+$theme-col-zeta-0,
+$theme-col-delta-1,
+$theme-col-epsilon-1,
+$theme-col-zeta-1,
+$theme-col-delta-2,
+$theme-col-epsilon-2,
+$theme-col-zeta-2,
+$theme-col-delta-3,
+$theme-col-epsilon-3,
+$theme-col-zeta-3;
+#floaters .floater {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  @for $index from 1 through 20 {
+    &:nth-child(#{$index}) {
+      //background: radial-gradient(50% 50%, ellipse, black, black 1%, transparent 1%), radial-gradient(50% 50%, ellipse, nth($floater-centers, $index), transparent 60%);
+      background: radial-gradient(50% 50%, ellipse, nth($floater-centers, $index), transparent 40%);
+      animation: float-#{$index} 15s ease infinite;
+    }
+  }
+}
+
+@import 'floater-data';
+
+@for $i from 1 through 20 {
+  $len: nth($ns, $i);
+  $p: nth($ps, $i);
+  $l: nth($ls, $i);
+  $t: nth($ts, $i);
+  $s: nth($ss, $i);
+  $r: nth($rs, $i);
+  $o: nth($os, $i);
+  @keyframes float-#{$i} {
+    @for $j from 1 through $len {
+      $time: nth($p, $j);
+      @if $j==1 {
+        $time: 0;
+      }
+      #{($j - 1)*100/$len+$time}% {
+        left: nth($l, $j);
+        top: nth($t, $j);
+        width: nth($s, $j) * nth($r, $j);
+        height: nth($s, $j) / nth($r, $j);
+        opacity: nth($o, $j);
+      }
+    }
+    100% {
+      left: nth($l, 1);
+      top: nth($t, 1);
+      width: nth($s, 1) * nth($r, 1);
+      height: nth($s, 1) / nth($r, 1);
+      opacity: nth($o, 1);
+    }
+  }
+}

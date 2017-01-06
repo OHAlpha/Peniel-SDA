@@ -1,0 +1,14 @@
+@import 'cream-palette';
+
+@for $i from 1 through $theme-cols-num {
+    $name: nth($theme-cols-names,$i);
+    $colors: nth($theme-cols,$i);
+    @for $j from 0 to 5 {
+        .background-#{$name}-#{$j} {
+            background-color: nth($colors,$j+1);
+        }
+        .color-#{$name}-#{$j} {
+            color: nth($colors,$j+1);
+        }
+    }
+}

@@ -1,0 +1,60 @@
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /*
+    background: url(<%= asset_path '2094abb844c535e9265673bd29e8e3aa.jpg' %>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 40%;
+    background-size: cover;
+    */
+}
+
+$menu-height: 100px;
+$main-padding: 20px;
+$menu-padding: 5px;
+$menu-logo-size: $menu-height - 2 * $menu-padding;
+
+nav {
+    position: absolute;
+    left: $menu-padding;
+    top: 0;
+    right: $menu-padding;
+    height: $menu-height;
+    padding: $menu-padding;
+    .logo {
+        width: $menu-logo-size;
+        height: $menu-logo-size;
+    }
+}
+
+main {
+    position: absolute;
+    left: $main-padding;
+    top: $menu-height;
+    right: $main-padding;
+    bottom: $main-padding;
+    border: 3px inset #ddd;
+    border-radius: 8px;
+    background: linear-gradient(270deg, #246655, #662424);
+    background-size: 400% 400%;
+    animation: AnimationName 30s ease infinite;
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
